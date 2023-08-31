@@ -1,0 +1,22 @@
+[package]
+name = "database-model"
+version = "0.1.0"
+edition = "2021"
+
+[dependencies.sea-orm]
+version = "0.11"
+default-features = false
+features = [
+  "runtime-actix-rustls",
+  "sqlx-postgres",
+  "macros",
+  "debug-print",
+  "with-chrono",
+  "with-json",
+  "with-uuid",
+  "with-rust_decimal",
+]
+
+[dev-dependencies]
+uuid = { version = "1.4", features = ["v4"] }
+chrono = "0.4"
