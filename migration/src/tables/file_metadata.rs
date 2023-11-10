@@ -25,13 +25,14 @@ impl SchemaTable for FileMetadata {
             .col(ColumnDef::new(Self::Name).string().not_null())
             .col(ColumnDef::new(Self::Hash).string().not_null())
             .col(ColumnDef::new(Self::HashAlgorithm).string().not_null())
-            .col(ColumnDef::new(Self::Size).integer().not_null())
+            .col(ColumnDef::new(Self::Size).big_unsigned().not_null())
             .col(
                 ColumnDef::new(Self::CreatedTime)
                     .timestamp_with_time_zone()
                     .not_null()
                     .default(Expr::current_timestamp()),
             )
+            .check(Expr::col(FileMetadata::Size).gte(0))
             .to_owned()
     }
 

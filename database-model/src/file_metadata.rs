@@ -10,7 +10,7 @@ pub struct Model {
     pub name: String,
     pub hash: String,
     pub hash_algorithm: String,
-    pub size: i32,
+    pub size: i64,
     pub created_time: DateTimeWithTimeZone,
 }
 

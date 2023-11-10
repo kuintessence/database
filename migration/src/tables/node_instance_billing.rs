@@ -28,12 +28,7 @@ impl SchemaTable for NodeInstanceBilling {
             .table(Self::Table)
             .if_not_exists()
             .col(&mut uuid_pkey(Self::Id))
-            .col(
-                ColumnDef::new(Self::NodeInstanceId)
-                    .uuid()
-                    .not_null()
-                    .unique_key(),
-            )
+            .col(ColumnDef::new(Self::NodeInstanceId).uuid().not_null().unique_key())
             .col(ColumnDef::new(Self::FlowInstanceId).uuid().not_null())
             .col(ColumnDef::new(Self::Cpu).big_integer().not_null())
             .col(ColumnDef::new(Self::Memory).big_integer().not_null())
@@ -54,6 +49,11 @@ impl SchemaTable for NodeInstanceBilling {
                     .not_null()
                     .default(Expr::current_timestamp()),
             )
+            .check(Expr::col(NodeInstanceBilling::Cpu).gte(0))
+            .check(Expr::col(NodeInstanceBilling::Memory).gte(0))
+            .check(Expr::col(NodeInstanceBilling::Storage).gte(0))
+            .check(Expr::col(NodeInstanceBilling::CpuTime).gte(0))
+            .check(Expr::col(NodeInstanceBilling::WallTime).gte(0))
             .to_owned()
     }
 
