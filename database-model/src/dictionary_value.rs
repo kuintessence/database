@@ -11,7 +11,7 @@ pub struct Model {
     pub value: i32,
     pub parent_id: Option<Uuid>,
     pub dictionary_id: Uuid,
-    pub created_time: Option<DateTimeWithTimeZone>,
+    pub created_time: DateTimeWithTimeZone,
 }
 
 #[derive(Copy, Clone, Debug, EnumIter, DeriveRelation)]

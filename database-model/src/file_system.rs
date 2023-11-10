@@ -12,7 +12,7 @@ pub struct Model {
     pub is_dict: bool,
     pub kind: String,
     pub owner_id: Uuid,
-    pub created_time: Option<DateTimeWithTimeZone>,
+    pub created_time: DateTimeWithTimeZone,
     pub file_metadata_id: Option<Uuid>,
     #[sea_orm(column_type = "JsonBinary", nullable)]
     pub meta: Option<Json>,

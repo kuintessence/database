@@ -7,7 +7,7 @@ use sea_orm::entity::prelude::*;
 pub struct Model {
     #[sea_orm(primary_key, auto_increment = false)]
     pub id: Uuid,
-    pub created_at: Option<DateTimeWithTimeZone>,
+    pub created_at: DateTimeWithTimeZone,
     pub r#type: Option<i32>,
     pub favorite_id: Option<Uuid>,
     pub user_id: Option<Uuid>,

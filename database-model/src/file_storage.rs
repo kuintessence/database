@@ -10,7 +10,7 @@ pub struct Model {
     pub storage_server_id: Uuid,
     pub file_metadata_id: Uuid,
     pub server_url: String,
-    pub created_time: Option<DateTimeWithTimeZone>,
+    pub created_time: DateTimeWithTimeZone,
     pub created_user_id: Uuid,
 }
 

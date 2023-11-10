@@ -10,7 +10,7 @@ pub struct Model {
     pub operation_type: i32,
     #[sea_orm(column_type = "Text")]
     pub description: String,
-    pub created_time: Option<DateTimeWithTimeZone>,
+    pub created_time: DateTimeWithTimeZone,
     pub created_user_id: Option<Uuid>,
 }
 

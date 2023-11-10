@@ -11,7 +11,7 @@ pub struct Model {
     pub hash: String,
     pub hash_algorithm: String,
     pub size: i32,
-    pub created_time: Option<DateTimeWithTimeZone>,
+    pub created_time: DateTimeWithTimeZone,
 }
 
 #[derive(Copy, Clone, Debug, EnumIter, DeriveRelation)]

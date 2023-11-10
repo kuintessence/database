@@ -15,9 +15,9 @@ pub struct Model {
     pub wall_time: i64,
     #[sea_orm(column_type = "Decimal(Some((12, 2)))")]
     pub total_price: Decimal,
-    pub user_id: Option<Uuid>,
+    pub user_id: Uuid,
     pub created_time: DateTimeWithTimeZone,
-    pub modified_time: Option<DateTimeWithTimeZone>,
+    pub modified_time: DateTimeWithTimeZone,
 }
 
 #[derive(Copy, Clone, Debug, EnumIter, DeriveRelation)]
