@@ -10,7 +10,7 @@ pub struct Model {
     pub parent_id: Option<Uuid>,
     pub name: String,
     pub is_dict: bool,
-    pub kind: String,
+    pub kind: i32,
     pub owner_id: Uuid,
     pub created_time: DateTimeWithTimeZone,
     pub file_metadata_id: Option<Uuid>,

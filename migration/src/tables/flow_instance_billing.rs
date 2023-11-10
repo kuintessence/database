@@ -26,22 +26,13 @@ impl SchemaTable for FlowInstanceBilling {
             .table(Self::Table)
             .if_not_exists()
             .col(&mut uuid_pkey(Self::Id))
-            .col(
-                ColumnDef::new(Self::FlowInstanceId)
-                    .uuid()
-                    .not_null()
-                    .unique_key(),
-            )
+            .col(ColumnDef::new(Self::FlowInstanceId).uuid().not_null().unique_key())
             .col(ColumnDef::new(Self::Cpu).integer().not_null())
             .col(ColumnDef::new(Self::Memory).big_integer().not_null())
             .col(ColumnDef::new(Self::Storage).big_integer().not_null())
             .col(ColumnDef::new(Self::WallTime).big_integer().not_null())
-            .col(
-                ColumnDef::new(Self::TotalPrice)
-                    .decimal_len(12, 2)
-                    .not_null(),
-            )
-            .col(ColumnDef::new(Self::UserId).uuid())
+            .col(ColumnDef::new(Self::TotalPrice).decimal_len(12, 2).not_null())
+            .col(ColumnDef::new(Self::UserId).uuid().not_null())
             .col(
                 ColumnDef::new(Self::CreatedTime)
                     .timestamp_with_time_zone()
@@ -51,6 +42,7 @@ impl SchemaTable for FlowInstanceBilling {
             .col(
                 ColumnDef::new(Self::ModifiedTime)
                     .timestamp_with_time_zone()
+                    .not_null()
                     .default(Expr::current_timestamp()),
             )
             .to_owned()

@@ -24,6 +24,7 @@ impl SchemaTable for UserFavorite {
             .col(
                 ColumnDef::new(Self::CreatedAt)
                     .timestamp_with_time_zone()
+                    .not_null()
                     .default(Expr::current_timestamp()),
             )
             .col(ColumnDef::new(Self::Type).integer().default(0))

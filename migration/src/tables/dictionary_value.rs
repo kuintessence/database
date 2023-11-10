@@ -33,6 +33,7 @@ impl SchemaTable for DictionaryValue {
             .col(
                 ColumnDef::new(Self::CreatedTime)
                     .timestamp_with_time_zone()
+                    .not_null()
                     .default(Expr::current_timestamp()),
             )
             .foreign_key(

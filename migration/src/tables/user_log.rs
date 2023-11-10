@@ -25,6 +25,7 @@ impl SchemaTable for UserLog {
             .col(
                 ColumnDef::new(Self::CreatedTime)
                     .timestamp_with_time_zone()
+                    .not_null()
                     .default(Expr::current_timestamp()),
             )
             .col(ColumnDef::new(Self::CreatedUserId).uuid())

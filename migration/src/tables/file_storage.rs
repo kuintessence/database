@@ -29,15 +29,11 @@ impl SchemaTable for FileStorage {
             .col(
                 ColumnDef::new(Self::CreatedTime)
                     .timestamp_with_time_zone()
+                    .not_null()
                     .default(Expr::current_timestamp()),
             )
             .col(ColumnDef::new(Self::CreatedUserId).uuid().not_null())
-            .index(
-                Index::create()
-                    .unique()
-                    .col(Self::StorageServerId)
-                    .col(Self::FileMetadataId),
-            )
+            .index(Index::create().unique().col(Self::StorageServerId).col(Self::FileMetadataId))
             .foreign_key(
                 ForeignKey::create()
                     .from(Self::Table, Self::FileMetadataId)

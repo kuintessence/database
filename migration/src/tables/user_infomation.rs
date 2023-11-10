@@ -26,11 +26,13 @@ impl SchemaTable for UserInformation {
             .col(
                 ColumnDef::new(Self::CreatedAt)
                     .timestamp_with_time_zone()
+                    .not_null()
                     .default(Expr::current_timestamp()),
             )
             .col(
                 ColumnDef::new(Self::UpdatedAt)
                     .timestamp_with_time_zone()
+                    .not_null()
                     .default(Expr::current_timestamp()),
             )
             .col(ColumnDef::new(Self::OidcId).uuid().not_null().unique_key())

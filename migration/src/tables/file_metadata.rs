@@ -29,6 +29,7 @@ impl SchemaTable for FileMetadata {
             .col(
                 ColumnDef::new(Self::CreatedTime)
                     .timestamp_with_time_zone()
+                    .not_null()
                     .default(Expr::current_timestamp()),
             )
             .to_owned()
