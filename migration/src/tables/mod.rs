@@ -29,6 +29,7 @@ mod software_block_list;
 mod software_install_history;
 mod software_source;
 mod storage_server;
+mod task;
 mod user_component;
 mod user_favorite;
 mod user_infomation;
@@ -69,6 +70,7 @@ pub use self::{
     software_install_history::SoftwareInstallHistory,
     software_source::SoftwareSource,
     storage_server::StorageServer,
+    task::Task,
     user_component::UserComponent,
     user_favorite::UserFavorite,
     user_infomation::UserInformation,
@@ -85,8 +87,6 @@ const TRANSACTION_TIMESTAMP: &str = "transaction_timestamp()";
 #[inline]
 fn uuid_pkey(name: impl IntoIden) -> ColumnDef {
     let mut cd = ColumnDef::new(name);
-    cd.uuid()
-        .primary_key()
-        .default(Expr::cust("gen_random_uuid()"));
+    cd.uuid().primary_key().default(Expr::cust("gen_random_uuid()"));
     cd
 }
