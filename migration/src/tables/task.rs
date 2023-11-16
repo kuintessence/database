@@ -13,6 +13,8 @@ pub enum Task {
     Body,
     Type,
     Status,
+    Message,
+    UsedResources,
 }
 
 impl SchemaTable for Task {
@@ -25,6 +27,8 @@ impl SchemaTable for Task {
             .col(ColumnDef::new(Self::Body).json_binary().not_null())
             .col(ColumnDef::new(Self::Type).integer().not_null())
             .col(ColumnDef::new(Self::Status).integer().not_null())
+            .col(ColumnDef::new(Self::Message).string())
+            .col(ColumnDef::new(Self::UsedResources).json_binary())
             .foreign_key(
                 ForeignKey::create()
                     .from(Self::Table, Self::NodeInstanceId)
