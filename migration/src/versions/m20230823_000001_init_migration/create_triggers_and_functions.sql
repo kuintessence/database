@@ -104,3 +104,10 @@ COMMENT ON TRIGGER "set_public_project_user_updated_at" ON "public"."project_use
 CREATE OR REPLACE TRIGGER "update_time" BEFORE UPDATE ON "public"."software_block_list"
 FOR EACH ROW
 EXECUTE PROCEDURE "public"."update_updated_on_user_task"();
+
+-- ----------------------------
+-- Triggers structure for table task
+-- ----------------------------
+CREATE OR REPLACE TRIGGER "update_time" BEFORE UPDATE ON "public"."task"
+FOR EACH ROW
+EXECUTE PROCEDURE "public"."update_updated_on_user_task"();
