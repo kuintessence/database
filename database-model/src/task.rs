@@ -15,6 +15,8 @@ pub struct Model {
     pub message: Option<String>,
     #[sea_orm(column_type = "JsonBinary", nullable)]
     pub used_resources: Option<Json>,
+    pub created_time: DateTimeWithTimeZone,
+    pub last_modified_time: DateTimeWithTimeZone,
 }
 
 #[derive(Copy, Clone, Debug, EnumIter, DeriveRelation)]
@@ -24,7 +26,7 @@ pub enum Relation {
         from = "Column::NodeInstanceId",
         to = "super::node_instance::Column::Id",
         on_update = "NoAction",
-        on_delete = "NoAction"
+        on_delete = "Cascade"
     )]
     NodeInstance,
 }

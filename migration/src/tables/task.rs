@@ -15,6 +15,8 @@ pub enum Task {
     Status,
     Message,
     UsedResources,
+    CreatedTime,
+    LastModifiedTime,
 }
 
 impl SchemaTable for Task {
@@ -29,10 +31,23 @@ impl SchemaTable for Task {
             .col(ColumnDef::new(Self::Status).integer().not_null())
             .col(ColumnDef::new(Self::Message).string())
             .col(ColumnDef::new(Self::UsedResources).json_binary())
+            .col(
+                ColumnDef::new(Self::CreatedTime)
+                    .timestamp_with_time_zone()
+                    .not_null()
+                    .default(Expr::current_timestamp()),
+            )
+            .col(
+                ColumnDef::new(Self::LastModifiedTime)
+                    .timestamp_with_time_zone()
+                    .not_null()
+                    .default(Expr::current_timestamp()),
+            )
             .foreign_key(
                 ForeignKey::create()
                     .from(Self::Table, Self::NodeInstanceId)
-                    .to(NodeInstance::Table, NodeInstance::Id),
+                    .to(NodeInstance::Table, NodeInstance::Id)
+                    .on_delete(ForeignKeyAction::Cascade),
             )
             .to_owned()
     }
