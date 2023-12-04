@@ -13,6 +13,7 @@ pub enum Task {
     Body,
     Type,
     Status,
+    Number,
     Message,
     UsedResources,
     CreatedTime,
@@ -29,6 +30,7 @@ impl SchemaTable for Task {
             .col(ColumnDef::new(Self::Body).json_binary().not_null())
             .col(ColumnDef::new(Self::Type).integer().not_null())
             .col(ColumnDef::new(Self::Status).integer().not_null())
+            .col(ColumnDef::new(Self::Number).integer().not_null())
             .col(ColumnDef::new(Self::Message).string())
             .col(ColumnDef::new(Self::UsedResources).json_binary())
             .col(

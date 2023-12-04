@@ -12,6 +12,7 @@ pub struct Model {
     pub body: Json,
     pub r#type: i32,
     pub status: i32,
+    pub number: i32,
     pub message: Option<String>,
     #[sea_orm(column_type = "JsonBinary", nullable)]
     pub used_resources: Option<Json>,
