@@ -43,7 +43,7 @@ impl SchemaTable for FlowDraft {
                     .default(Expr::current_timestamp())
                     .not_null(),
             )
-            .col(ColumnDef::new(Self::Type).string().not_null())
+            .col(ColumnDef::new(Self::Type).integer().not_null())
             .col(ColumnDef::new(Self::ProjectId).uuid())
             .foreign_key(
                 ForeignKey::create()

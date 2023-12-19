@@ -16,7 +16,7 @@ pub struct Model {
     pub user_id: Uuid,
     pub created_time: DateTimeWithTimeZone,
     pub last_modified_time: DateTimeWithTimeZone,
-    pub r#type: String,
+    pub r#type: i32,
     pub project_id: Option<Uuid>,
 }
 
