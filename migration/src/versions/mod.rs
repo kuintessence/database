@@ -4,4 +4,3 @@
 //! [Rust 2018 submodule organization]: https://doc.rust-lang.org/nightly/edition-guide/rust-2018/path-changes.html#no-more-modrs
 
 pub(super) mod m20230823_000001_init_migration;
-pub(super) mod m20231110_000001_add_task;
