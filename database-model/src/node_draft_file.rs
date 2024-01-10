@@ -9,8 +9,8 @@ pub struct Model {
     pub flow_draft_id: Uuid,
     #[sea_orm(primary_key, auto_increment = false)]
     pub node_external_id: Uuid,
-    pub plot_descriptor: Option<String>,
     #[sea_orm(primary_key, auto_increment = false)]
+    pub plot_descriptor: String,
     pub file_metadata_id: Uuid,
 }
 
